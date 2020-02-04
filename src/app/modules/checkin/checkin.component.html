@@ -1,0 +1,27 @@
+<p>Booking Details</p>
+<form [formGroup]="checkinForm" (ngSubmit)="onSubmit()" class="form-row">
+    <div *ngIf="error" class="invalid-feedback">
+        <div *ngIf="f.lastName.errors.required">{{this.error}}</div>
+    </div>
+    <div class="col">
+        <label for="bookingid" class="sr-only">Booking Id</label>
+        <input formControlName="bookingId" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.bookingId.errors }" type="text" class="form-control"
+            id="bookingid" placeholder="Booking Id">
+        <div *ngIf="submitted && f.bookingId.errors" class="invalid-feedback">
+            <div *ngIf="f.bookingId.errors.required">Booking Id is required</div>
+        </div>
+    </div>
+    <div class="col">
+        <label for="userLastName" class="sr-only">Password</label>
+        <input formControlName="lastName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" type="text" class="form-control"
+            id="userLastName" placeholder="Last Name/Email">
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last Name / Email Id is required</div>
+        </div>
+    </div>
+    <div class="col">
+        <button type="submit" class="btn btn-primary" >Get Ticket Details</button>
+    </div>
+</form>
