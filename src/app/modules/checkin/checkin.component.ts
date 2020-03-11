@@ -13,10 +13,11 @@ export class CheckinComponent implements OnInit {
 
   checkinForm: FormGroup;
   submitted = false;
-  error: any;
+  errorMsg: any;
   ticketInfo: Ticket;
+  boardingPass : string;
   message: string = "checkin";
-
+  
 
   constructor(private formBuilder: FormBuilder,
     public activateRoute: ActivatedRoute,
@@ -31,7 +32,9 @@ export class CheckinComponent implements OnInit {
       bookingId: ['', Validators.required],
       lastName: ['', Validators.required]
     });
-    this.data.currentMessage.subscribe(message => this.ticketInfo = message);
+    this.data.currentMessage.subscribe(ticket => this.ticketInfo = ticket);
+    this.data.errorMessage.subscribe(err => this.errorMsg = err);  
+    this.data.boardingPa.subscribe(pass => this.boardingPass = pass);  
     this.data.updateCurrentPage(this.message);
   }
 
@@ -45,16 +48,27 @@ export class CheckinComponent implements OnInit {
     if (this.checkinForm.invalid) {
       return;
     }
-
-    this.apiService.getTicketDetails(this.checkinForm.value.bookingId, this.checkinForm.value.lastName).subscribe(
-      (data: Ticket) => {
+    debugger
+    this.apiService.getTicketDetails(this.checkinForm.value.bookingId, this.checkinForm.value.lastName)
+    .subscribe(
+      (data: Ticket) => {        
         this.data.updateTicketDetails(data);
         this.router.navigate(['ticket']);
-      }, // success path
-      error => this.error = error // error path      
+      }      
     );
-    // display form values on success
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.checkinForm.value, null, 4));
+    if(this.boardingPass == 'boarding-pass'){
+      console.log('aaaaaaaaaaaaaaaaaaa boarding pass');
+    }
+  }
+
+  getBoardingPass(){
+    this.apiService.getBoardingPass(this.checkinForm.value.bookingId, this.checkinForm.value.lastName)
+    .subscribe(
+      (data: Ticket) => {        
+        this.data.updateTicketDetails(data);
+        this.router.navigate(['boarding']);
+      }      
+    );
   }
 
   onReset() {

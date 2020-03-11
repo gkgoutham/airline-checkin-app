@@ -1,2 +1,40 @@
-<h3>Menu 4</h3>
-<p>Some content in menu 4.</p>
+<h3>Your Boarding Pass</h3>
+<div class="content">
+    <div *ngFor="let passenger of ticketDetails.passengers">
+        <div class="card text-center bg-success">
+            <div class="card-header">
+                Boarding pass
+            </div>
+            <div class="card-body bg-primary">
+                <div class="grid">
+                    <div class="row">
+                        <div class="col-3"><span>Name of the Passenger:</span><br /><span>{{passenger.name}}</span>
+                        </div>
+                        <div class="col-3"><span>Carrier:</span><br />AC</div>
+                        <div class="col-3"><span>Flight No:</span><br /><span>123455</span></div>
+                        <div class="col-3"><span>Class</span><br /><span>B</span></div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-3"><span>From:</span><span>{{ticketDetails.boardingLocation}}</span><br />
+                            <span>To:</span><span>{{ticketDetails.departureLocation}}</span></div>
+                        <div class="col-3"><span>Date:</span><br /><span> {{ticketDetails.travelingDate}}</span></div>
+                        <div class="col-3"><span>Luggage</span><br /><span>Y</span></div>
+                        <div class="col-3"><span>Seat:</span><br /><span>12A</span></div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-3"><span>GATE:</span><br />
+                            <span>H2</span></div>
+                        <div class="col-6"><span>BOARDING TIME:</span><span> TIME</span></div>
+                        <div class="col-4"><span>ASDFAFASFSDS AFASFA</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+
+            </div>
+            <br />
+        </div>
+    </div>
+</div>

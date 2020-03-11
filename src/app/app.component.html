@@ -22,47 +22,55 @@
   </div>
 
   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark justify-content-center align-items-center">
-      <div class="container">
-          <div class="row">
-              <div class="process">
-                  <div class="process-row nav nav-tabs">
-                      <div *ngIf="message == 'checkin' " class="process-step">
-                          <button class="btn btn-info btn-circle"><i class="fa fa-ticket fa-3x"></i></button>
-                          <p><small>Booking<br />information</small></p>
-                      </div>
-                      <div *ngIf="message != 'checkin' " class="process-step">
-                          <button class="btn btn-light btn-circle"><i class="fa fa-ticket fa-3x"></i></button>
-                          <p><small>Booking<br />information</small></p>
-                      </div>
-                      <div *ngIf="message == 'ticket' "  class="process-step">
-                          
-                        <button class="btn btn-info btn-circle">
-                            <i class="fa fa-info fa-3x"></i>
-                        </button>                   
-                          <p><small>Ticket<br />Details</small></p>
-                      </div>
-                      <div *ngIf="message != 'ticket' "  class="process-step">
-                          <button class="btn btn-light btn-circle">
-                              <i class="fa fa-info fa-3x"></i>
-                          </button> 
-                            <p><small>Ticket<br />Details</small></p>
-                        </div>
-                      <div class="process-step">
-                          <button class="btn btn-light btn-circle"><i class="fa fa-shield fa-3x"></i></button>
-                          <p><small>Safety<br />Measure</small></p>
-                      </div>
-                      <div class="process-step">
-                          <button class="btn btn-light btn-circle"><i class="fa fa-check fa-3x"></i></button>
-                          <p><small>Boarding<br />Pass</small></p>
-                      </div>
-                  </div>
-              </div>
-              <div class="d-flex col-12 justify-content-center">
-                   
-                      <router-outlet></router-outlet>                    
-                               
-              </div>
+    <div class="container">
+      <div class="row">
+        <div class="process">
+          <div class="process-row nav nav-tabs">
+            <div *ngIf="message == 'checkin' " class="process-step">
+              <button class="btn btn-info btn-circle"><i class="fa fa-ticket fa-3x"></i></button>
+              <p><small>Booking<br />information</small></p>
+            </div>
+            <div *ngIf="message != 'checkin' " class="process-step">
+              <button class="btn btn-light btn-circle"><i class="fa fa-ticket fa-3x"></i></button>
+              <p><small>Booking<br />information</small></p>
+            </div>
+            <div *ngIf="message == 'ticket' " class="process-step">
+
+              <button class="btn btn-info btn-circle">
+                <i class="fa fa-info fa-3x"></i>
+              </button>
+              <p><small>Ticket<br />Details</small></p>
+            </div>
+            <div *ngIf="message != 'ticket' " class="process-step">
+              <button class="btn btn-light btn-circle">
+                <i class="fa fa-info fa-3x"></i>
+              </button>
+              <p><small>Ticket<br />Details</small></p>
+            </div>
+            <div class="process-step" *ngIf="message != 'safety' " >
+              <button class="btn btn-light btn-circle"><i class="fa fa-shield fa-3x"></i></button>
+              <p><small>Safety<br />Measure</small></p>
+            </div>
+            <div class="process-step" *ngIf="message == 'safety' " >
+              <button class="btn btn-info btn-circle"><i class="fa fa-shield fa-3x"></i></button>
+              <p><small>Safety<br />Measure</small></p>
+            </div>
+            <div class="process-step" *ngIf="message != 'boarding' " >
+              <button class="btn btn-light btn-circle"><i class="fa fa-check fa-3x"></i></button>
+              <p><small>Boarding<br />Pass</small></p>
+            </div>
+            <div class="process-step" *ngIf="message == 'boarding'" >
+              <button class="btn btn-info btn-circle"><i class="fa fa-check fa-3x"></i></button>
+              <p><small>Boarding<br />Pass</small></p>
+            </div>
           </div>
-      </div>   
+        </div>
+        <div class="d-flex col-12 justify-content-center">
+
+          <router-outlet></router-outlet>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>

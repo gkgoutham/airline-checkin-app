@@ -25,30 +25,36 @@
 
         <div class=" col-sm-12">
             <h2><strong> Passenger Details</strong></h2>
-
-            <table class="table text-white ">
-                <thead>
+            <p-table [value]="ticketDetails.passengers" [(selection)]="selectedPassengers" selectionMode="multiple" dataKey="name">
+                <ng-template pTemplate="header">
                     <tr>
-                        <th>Select</th>
-                        <th>Name</th>                        
+                        <th>
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th>Name</th>
                         <th>Age</th>
                         <th>Gender</th>
                     </tr>
-                </thead>
-                <tbody>
-
-                    <tr *ngFor="let passenger of ticketDetails.passengers">
-                        <td class="text-center">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                </ng-template>
+                <ng-template pTemplate="body" let-passenger>
+                    <tr [pSelectableRow]="passenger">
+                        <td>
+                            <p-tableCheckbox [value]="passenger"></p-tableCheckbox>
+                        </td>
                         <td>{{passenger.name}} {{passenger.lastName}}</td>
                         <td>{{passenger.age}}</td>
                         <td>{{passenger.gender}}</td>
                     </tr>
-            
-                </tbody>
-            </table>
-
+                </ng-template>
+                 <ng-template pTemplate="summary">
+                    <ul>
+                        <li *ngFor="let car of selectedPassengers" style="text-align: left">
+                            {{car.name + ' - ' + car.age + ' - ' + car.gender + ' - ' + car.lastName}}
+                        </li>
+                    </ul>
+                </ng-template>
+            </p-table>
+            <input type="button" class="form-control" (click)="doCheckIn()" value="Check-In">
         </div>
-
     </div>
 </div>

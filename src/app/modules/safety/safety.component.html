@@ -1,2 +1,17 @@
-<h3>Menu 3</h3>
-<p>Some content in menu 3.</p>
+<h3>Safety Instructions</h3>
+<p>You can make your flight even safer by following these guidelines:</p>
+<ul>
+    <li>Pay attention to the flight attendant safety briefing at the beginning of your flight and read the safety
+        briefing card.</li>
+    <li>Buckle up. Keep you and your family safe by wearing a seat belt at all times while seated. </li>
+    <li>Use an approved child safety seat or device if your child weighs less than 40 pounds. </li>
+    <li>Prevent in-flight injuries by following your airline's carry-on restrictions. </li>
+    <li>Check your airline's Portable Electronic Device (PED) policy </li>
+</ul>
+<form [formGroup]="checkinForm" (ngSubmit)="onAccept()" class="form-row">
+    <input type="checkbox" formControlName="acceptTerms" class="form-control"> Accept the terms
+    <div *ngIf="submitted && f.bookingId.acceptTerms" class="invalid-feedback">
+        <div *ngIf="f.acceptTerms.errors.required">Accept terms and conditions</div>
+    </div>
+    <input type="submit" value="Accept" class="form-control">
+</form>

@@ -7,6 +7,8 @@
 .process-step p{margin-top:4px}
 .btn-circle{width:80px;height:80px;text-align:center;font-size:12px;border-radius:50%}
 
+.ui-table-tbody .ui-chkbox { pointer-events: none; }
+
 .profile 
 {
     min-height: 355px;
